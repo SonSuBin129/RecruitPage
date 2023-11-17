@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404,get_list_or_404
 from django.http import HttpResponse, Http404
+import random
 
 import json
 from rest_framework.renderers import JSONRenderer
@@ -10,6 +11,8 @@ from django.http import JsonResponse
 
 from .models import Year, Team, Member, Info, Photo
 from .serializers import YearSerializer, TeamSerializer, MemberSerializer,InfoSerializer,PhotoSerializer
+
+import logging
 
 
 def getDetailsByTeam(year, team):
@@ -27,7 +30,7 @@ def getDetailsByTeam(year, team):
     #memberlist=get_object_or_404(Member, team=team_obj)
     memberlist = Member.objects.filter(team=team_obj)
 
-     
+
     photos = []
     for photo in photolist:
         photo_serializer=PhotoSerializer(photo)
@@ -114,3 +117,49 @@ def detail(request, year, team):
     
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+    
+
+#추가한 코드(랜덤전시)
+
+def getrandomExhibition(year, team):
+    year_str = str(year)
+    year_obj = get_object_or_404(Year, year=year_str)
+    teamlist = get_object_or_404(Team, year=year_obj, team=team)
+
+    # Randomly select 3 teams from teamlist
+    random_teams = random.sample(list(teamlist), min(3, len(teamlist)))
+
+    response_data_list = []
+
+    for random_team in random_teams:
+        photolist = Photo.objects.filter(team=random_team)
+
+        thumbnail = []
+        for photo in photolist:
+            photo_serializer = PhotoSerializer(photo)
+            thumbnail_photo = photo_serializer.data['photo'][0]
+            thumbnail.append(thumbnail_photo)
+
+        p_name = TeamSerializer(random_team).data['p_name']
+
+        response_data = {
+            'p_name': p_name,
+            'thumbnail': thumbnail,
+        }
+
+        response_data_list.append(response_data)
+
+    return response_data_list
+
+def randomExhibition(request, year=11):
+    try:
+        year_str = str(year)
+        year_obj = get_object_or_404(Year, year=year_str)
+        teamlist = get_list_or_404(Team, year=year_obj)
+        serializer = TeamSerializer(teamlist, many=True)
+
+        response_data = getrandomExhibition(year=year, team=None)
+
+        return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
+    except Team.DoesNotExist:
+        return JsonResponse({'message': '해당 정보를 찾을 수 없음'}, status=404)
