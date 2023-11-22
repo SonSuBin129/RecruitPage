@@ -40,9 +40,10 @@ def getDetailsByTeam(year, team):
     member_serializer=MemberSerializer(memberlist,many=True).data
 
     p_name = TeamSerializer(team_obj).data['p_name']
-
+    team_name = TeamSerializer(team_obj).data['team']
 
     response_data={
+        'team_name': team_name,
         'p_name': p_name,
         'photos': photos,
         'madeby':member_serializer,
