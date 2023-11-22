@@ -132,8 +132,10 @@ def getrandomExhibition(random_teams):
             thumbnail_serializer = PhotoSerializer(first_photo)
 
             p_name = TeamSerializer(random_team).data['p_name']
+            team_name = TeamSerializer(random_team).data['team']
 
             response_data = {
+                'team_name':team_name,
                 'p_name': p_name,
                 'thumbnail': thumbnail_serializer.data['photo'],
             }
