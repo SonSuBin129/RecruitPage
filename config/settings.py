@@ -32,10 +32,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CORS_ALLOWED_ORIGINS = [
+    # 허용할 리액트 앱의 URL을 여기에 추가합니다.
+    'http://localhost:3000',  # 예시 URL
+    'http://49.50.174.43:3000',
+
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders', # CORS 관련 추가'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +55,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',     # CORS 관련 추가
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
