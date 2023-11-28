@@ -36,7 +36,8 @@ CORS_ALLOWED_ORIGINS = [
     # 허용할 리액트 앱의 URL을 여기에 추가합니다.
     'http://localhost',  # 예시 URL
     'http://49.50.174.43',
-    'http://www.likelionkonkuk.com/',
+    'http://49.50.174.43:3000',
+    'http://www.likelionkonkuk.com',
 ]
 
 # Application definition
