@@ -49,6 +49,7 @@ def getDetailsByTeam(year, team):
         'madeby':member_serializer,
     }
 
+
     return response_data
 
 
@@ -113,6 +114,13 @@ def detail(request, year, team):
         }
         '''
         response_data = getDetailsByTeam(year, team)
+        # detail page에 대한 로그 남기기 (불필요시 삭제)
+        user_id = request.user.id
+        logger=logging.getLogger('detail')
+        info_string='detail'
+        info_dict = {'team_name':team}
+        logger.info(f'{info_dict},{info_string}', extra={'user_id': user_id})
+
 
         return JsonResponse(response_data, safe = False,json_dumps_params={'ensure_ascii': False} )
     
@@ -154,7 +162,21 @@ def randomExhibition(request, year=11):
         random_teams=random.sample(teamlist, min(3,len(teamlist)))
 
         response_data = getrandomExhibition(random_teams=random_teams)
+
+
+        # random page에 대한 로그 남기기 (불필요시 삭제)
+        user_id = request.user.id
+        logger=logging.getLogger('random')
+        info_string='random'
+        team_names = []
+        for team in random_teams:
+            team_names.append(team.team)
+        list_str = ';'.join(team_names)
+        info_dict = {'random_team_names':list_str}
+        logger.info(f'{info_dict},{info_string}', extra={'user_id': user_id})
+
     
         return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
+
     except Team.DoesNotExist:
         return JsonResponse({'message': '해당 정보를 찾을 수 없음'}, status=404)

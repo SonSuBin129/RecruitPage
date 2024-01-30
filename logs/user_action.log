@@ -1,0 +1,10 @@
+INFO,2024-01-27 18:18:11,['kunicorn', '195', '꽃내음'],random
+INFO,2024-01-27 18:18:12,['195', '플래임', '농토리'],random
+INFO,2024-01-27 18:18:38,['농토리', '플래임', '꽃내음'],random
+INFO,2024-01-27 18:18:38,['kunicorn', '금사빠', '덴시티'],random
+INFO,2024-01-27 18:18:43,195,detail
+INFO,2024-01-27 20:03:36,{'team_names': ['꽃내음', 'kunicorn', '금사빠']},random
+INFO,2024-01-27 20:04:54,{'random_team_names': ['금사빠', 'kunicorn', '덴시티']},random
+INFO,2024-01-27 20:04:57,{'team_name': '195'},detail
+INFO,2024-01-27 20:05:13,{'team_name': '195'},detail
+INFO,2024-01-27 20:05:21,{'team_name': 'kunicorn'},detail

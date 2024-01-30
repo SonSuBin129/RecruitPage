@@ -1,0 +1,8 @@
+2024-01-28 14:29:54,522,INFO,{'team_name': '195'},detail
+2024-01-28 14:33:18,578,INFO,{'team_name': '195'},detail
+2024-01-28 14:33:23,652,INFO,{'team_name': 'kunicorn'},detail
+2024-01-28 14:33:33,621,INFO,{'random_team_names': ['덴시티', '플래임', '195']},random
+2024-01-28 14:33:37,217,INFO,{'random_team_names': ['덴시티', '금사빠', '195']},random
+2024-01-28 14:38:14,738,INFO,{'team_name': '195'},detail
+2024-01-28 14:38:15,778,INFO,{'team_name': '195'},detail
+2024-01-28 14:38:34,357,INFO,{'random_team_names': '농토리;꽃내음;195'},random
