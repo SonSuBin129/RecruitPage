@@ -69,7 +69,14 @@ def main(request,year=11):
             team_serializer=TeamSerializer(team)
             team_name = team_serializer.data['team']
             response_datas.append(getDetailsByTeam(year = year, team = team_name))
-        
+
+
+        # main page에 대한 로그 남기기 (불필요시 삭제)
+        user_id = request.user.id
+        logger=logging.getLogger('main')
+        info_string='main'
+        info_dict = {}
+        logger.info(f'{info_dict},{info_string}', extra={'user_id': user_id})
 
         return JsonResponse(response_datas, safe=False, json_dumps_params={'ensure_ascii': False} )
         #return JsonResponse(serializer.data, safe = False, json_dumps_params={'ensure_ascii': False})

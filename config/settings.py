@@ -214,8 +214,8 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False,
         },
-        'mypage': {
-            'handlers': ['other_action'],
+        'main': {
+            'handlers': ['user_action'],
             'level': 'DEBUG',
             'propagate': False,
         },

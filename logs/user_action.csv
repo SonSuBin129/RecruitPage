@@ -6,3 +6,8 @@
 2024-01-28 14:38:14,738,INFO,{'team_name': '195'},detail
 2024-01-28 14:38:15,778,INFO,{'team_name': '195'},detail
 2024-01-28 14:38:34,357,INFO,{'random_team_names': '농토리;꽃내음;195'},random
+2024-02-01 14:57:17,694,INFO,{'team_name': '195'},detail
+2024-02-01 14:57:26,806,INFO,{'team_name': 'kunicorn'},detail
+2024-02-01 15:03:53,268,INFO,{'random_team_names': '꽃내음;195;금사빠'},random
+2024-02-01 15:03:57,566,INFO,{'team_name': '195'},detail
+2024-02-01 15:11:25,026,INFO,{},main
