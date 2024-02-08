@@ -123,10 +123,19 @@ def detail(request, year, team):
         response_data = getDetailsByTeam(year, team)
         # detail page에 대한 로그 남기기 (불필요시 삭제)
         user_id = request.user.id
+
+        sessionID="anonymous" #userID 대신 사용. 쿠키 어쩌구 확인.
+        '''
+        sessionID=request.session.session_key 
+        if not sessionID:
+            request.session.save()
+            sessionID=request.session.session_key
+        '''
+
         logger=logging.getLogger('detail')
         info_string='detail'
         info_dict = {'team_name':team}
-        logger.info(f'{info_dict},{info_string}', extra={'user_id': user_id})
+        logger.info(f'{info_dict},{info_string},{sessionID}', extra={'user_id': user_id})
 
 
         return JsonResponse(response_data, safe = False,json_dumps_params={'ensure_ascii': False} )
