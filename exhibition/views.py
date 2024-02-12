@@ -73,6 +73,16 @@ def main(request,year=11):
 
         # main page에 대한 로그 남기기 (불필요시 삭제)
         user_id = request.user.id
+
+        sessionID="anonymous" #userID 대신 사용. 쿠키 어쩌구 확인.
+        '''
+        sessionID=request.session.session_key 
+        if not sessionID:
+            request.session.save()
+            sessionID=request.session.session_key
+        '''
+
+
         logger=logging.getLogger('main')
         info_string='main'
         info_dict = {}
@@ -182,6 +192,16 @@ def randomExhibition(request, year=11):
 
         # random page에 대한 로그 남기기 (불필요시 삭제)
         user_id = request.user.id
+
+        sessionID="anonymous" #userID 대신 사용. 쿠키 어쩌구 확인.
+        '''
+        sessionID=request.session.session_key 
+        if not sessionID:
+            request.session.save()
+            sessionID=request.session.session_key
+        '''
+
+
         logger=logging.getLogger('random')
         info_string='random'
         team_names = []
@@ -189,7 +209,7 @@ def randomExhibition(request, year=11):
             team_names.append(team.team)
         list_str = ';'.join(team_names)
         info_dict = {'random_team_names':list_str}
-        logger.info(f'{info_dict},{info_string}', extra={'user_id': user_id})
+        logger.info(f'{info_dict},{info_string},{sessionID}', extra={'user_id': user_id})
 
     
         return JsonResponse(response_data, safe=False, json_dumps_params={'ensure_ascii': False})
