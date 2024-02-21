@@ -190,7 +190,7 @@ LOGGING = {
     'user_action': {
         'level': 'DEBUG',
         'class': 'logging.handlers.RotatingFileHandler',  # Changed to local file handler
-        'filename':  '/home/hongseoklee/workspace/logs/user_action.csv',  # Changed the filename
+        'filename':  '/home/sonsb129/workspace/logs/user_action.csv',  # Changed the filename
         'formatter': 'csv',
         'maxBytes': 1024*1024*10,
         'backupCount': 10,
@@ -200,7 +200,7 @@ LOGGING = {
     'other_action': { 
         'level': 'DEBUG',
         'class': 'logging.handlers.RotatingFileHandler',  # Changed to local file handler
-        'filename':  '/home/hongseoklee/workspace/logs/other_action.csv',  # Changed the filename
+        'filename':  '/home/sonsb129/workspace/logs/other_action.csv',  # Changed the filename
         'formatter': 'csv',
         'maxBytes': 1024*1024*10,
         'backupCount': None,  # Set the number of backup logs you want
