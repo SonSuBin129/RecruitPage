@@ -37,7 +37,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost',  # 예시 URL
     'http://49.50.174.43',
     'http://49.50.174.43:3000',
-    'http://101.101.216.213'
+    'http://101.101.216.213',
     'http://www.likelionkonkuk.com',
 ]
 
